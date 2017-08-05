@@ -25,7 +25,7 @@ model {
 
         defaultConfig {
             applicationId = 'rocks.georgik.sdlapp'
-            minSdkVersion.apiLevel = 4
+            minSdkVersion.apiLevel = 12
             targetSdkVersion.apiLevel = gradle.sdkVersion
         }
         sources {
@@ -39,6 +39,9 @@ model {
                     source {
                         srcDir "${lib_distribution_root}/main/lib"
                     }   
+					source {
+                        srcDir "${lib_distribution_root}/png/lib"
+					}
                 }   
             }   
         }   

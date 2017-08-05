@@ -36,6 +36,9 @@ model {
         sources {
             main {
                 jni {
+                    dependencies {
+                        library 'zip' linkage 'shared'
+                    }
                     source {
                         srcDir "src"
                     }
