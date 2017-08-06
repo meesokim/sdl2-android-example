@@ -36,6 +36,8 @@ int main(int argc, char* argv[]) {
     SDL_Window *window;                    // Declare a pointer
     SDL_Surface *surface;
     SDL_Texture *texture;
+	int done;
+	SDL_Event event;
     SDL_Init(SDL_INIT_VIDEO);              // Initialize SDL2
 
     // Create an application window with the following settings:
@@ -103,7 +105,17 @@ int main(int argc, char* argv[]) {
 
     // Render the rect to the screen
     SDL_RenderPresent(renderer);
-    SDL_Delay(4000);
+	done = 0;
+	while (!done) {
+	while (SDL_PollEvent(&event)) {
+	  if (event.type == SDL_QUIT)
+		done = 1;
+	}
+	SDL_RenderCopy(renderer, texture, NULL, NULL);
+	SDL_RenderPresent(renderer);
+	SDL_Delay(100);
+	}
+	SDL_DestroyTexture(texture);
 
     // Close and destroy the window
     SDL_DestroyWindow(window);
